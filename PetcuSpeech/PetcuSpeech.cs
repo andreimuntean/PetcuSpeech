@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 class PetcuSpeech
 {
@@ -15,7 +16,7 @@ class PetcuSpeech
             try
             {
                 // Represents the Petcu'd version of the text from a specified file.
-                var petcuText = "";
+                var petcuTextBuilder = new StringBuilder();
 
                 // Keeps track of Petcu's arguments (sentences).
                 int index = 0;
@@ -30,14 +31,14 @@ class PetcuSpeech
                         // Determines whether this is a potential argument of Petcu (in other words, a sentence).
                         if (potentialPetcuArgument != "")
                         {
-                            petcuText += "\n" + (++index).ToString() + ") " + potentialPetcuArgument + "\n";
+                            petcuTextBuilder.Append("\n" + (++index).ToString() + ") " + potentialPetcuArgument + "\n");
                         }
                     }
                 }
 
                 // Outputs the Petcu'd version of the original text.
                 Console.WriteLine("Original text translated to PetcuSpeech:");
-                Console.WriteLine(petcuText);
+                Console.WriteLine(petcuTextBuilder.ToString());
             }
             catch
             {

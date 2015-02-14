@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-class Program
+class PetcuSpeech
 {
     static void Main(string[] args)
     {
@@ -18,7 +18,7 @@ class Program
                 var petcuText = "";
 
                 // Keeps track of Petcu's arguments (sentences).
-                int index = 1;
+                int index = 0;
 
                 // Reads the file from the specified path.
                 using (var reader = new StreamReader(args[0]))
@@ -30,7 +30,7 @@ class Program
                         // Determines whether this is a potential argument of Petcu (in other words, a sentence).
                         if (potentialPetcuArgument != "")
                         {
-                            petcuText += "\n" + index++.ToString() + ") " + potentialPetcuArgument + "\n";
+                            petcuText += "\n" + (++index).ToString() + ") " + potentialPetcuArgument + "\n";
                         }
                     }
                 }
